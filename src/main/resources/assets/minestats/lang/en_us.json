@@ -9,5 +9,8 @@
   "examplemod.configuration.items": "Item List",
   "examplemod.configuration.logDirtBlock": "Log Dirt Block",
   "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
-  "examplemod.configuration.magicNumber": "Magic Number"
+  "examplemod.configuration.magicNumber": "Magic Number",
+  "item.minestats.tempered_sword": "Tempered Sword",
+  "tooltip.minestats.level": "Level: %s",
+  "tooltip.minestats.kills": "Kills: %s"
 }
