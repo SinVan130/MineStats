@@ -42,10 +42,11 @@ public class KillEvents {
         WeaponData next = data.addKill(isBoss);
         stack.set(ModDataComponents.WEAPON_DATA.get(), next);
 
-        if (next.level() > data.level()) {
+        if (next.rank() > data.rank()) {
             WeaponUtil.updateAttributes(stack);
             player.displayClientMessage(
-                    Component.translatable("message." + ExampleMod.MODID + ".levelup", next.level()), true);
+                    Component.translatable("message." + ExampleMod.MODID + ".rankup",
+                            WeaponRarity.component(next.rank())), true);
         }
     }
 }

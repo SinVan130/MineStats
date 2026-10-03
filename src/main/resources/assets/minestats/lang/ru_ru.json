@@ -2,5 +2,7 @@
   "item.minestats.tempered_sword": "Закалённый меч",
   "tooltip.minestats.level": "Уровень: %s",
   "tooltip.minestats.kills": "Убийств: %s",
-  "tooltip.minestats.luck": "Бонус удачи: +%s"
+  "tooltip.minestats.luck": "Удача: +%s",
+  "tooltip.minestats.rarity": "Редкость: %s",
+  "message.minestats.rankup": "Редкость повышена: %s"
 }

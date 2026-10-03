@@ -6,49 +6,49 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 
-public record WeaponData(int level, long kills, long progress, long boss, int luckBonus) {
+public record WeaponData(long points, long kills, int luckBonus, long enchantPoints) {
 
-    public static final WeaponData DEFAULT = new WeaponData(1, 0, 0, 0, 0);
+    public static final WeaponData DEFAULT = new WeaponData(0, 0, 0, 0);
 
     public static final Codec<WeaponData> CODEC = RecordCodecBuilder.create(i -> i.group(
-            Codec.INT.fieldOf("level").forGetter(WeaponData::level),
-            Codec.LONG.fieldOf("kills").forGetter(WeaponData::kills),
-            Codec.LONG.fieldOf("progress").forGetter(WeaponData::progress),
-            Codec.LONG.fieldOf("boss").forGetter(WeaponData::boss),
-            Codec.INT.optionalFieldOf("luck_bonus", 0).forGetter(WeaponData::luckBonus)
+            Codec.LONG.optionalFieldOf("points", 0L).forGetter(WeaponData::points),
+            Codec.LONG.optionalFieldOf("kills", 0L).forGetter(WeaponData::kills),
+            Codec.INT.optionalFieldOf("luck_bonus", 0).forGetter(WeaponData::luckBonus),
+            Codec.LONG.optionalFieldOf("enchant_points", 0L).forGetter(WeaponData::enchantPoints)
     ).apply(i, WeaponData::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, WeaponData> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.VAR_INT, WeaponData::level,
+            ByteBufCodecs.VAR_LONG, WeaponData::points,
             ByteBufCodecs.VAR_LONG, WeaponData::kills,
-            ByteBufCodecs.VAR_LONG, WeaponData::progress,
-            ByteBufCodecs.VAR_LONG, WeaponData::boss,
             ByteBufCodecs.VAR_INT, WeaponData::luckBonus,
+            ByteBufCodecs.VAR_LONG, WeaponData::enchantPoints,
             WeaponData::new
     );
 
-    /** Сколько убийств любых мобов нужно, чтобы выйти с текущего уровня */
-    public long requiredKills() {
-        long mult = 1L << Math.min(level - 1, 40);
-        return (100 + level) * mult;
+    public int rank() {
+        return RankPoints.rankFor(points);
     }
 
-    /** Нужен ли босс: на каждом втором уровне */
-    public long requiredBosses() {
-        return level % 2 == 0 ? 1 : 0;
-    }
-
-    public WeaponData withLuckBonus(int bonus) {
-        return new WeaponData(level, kills, progress, boss, Math.max(0, bonus));
+    public WeaponData addPoints(long amount) {
+        return new WeaponData(Math.max(0, points + amount), kills, luckBonus, enchantPoints);
     }
 
     public WeaponData addKill(boolean isBoss) {
-        long p = Math.min(progress + 1, requiredKills());
-        long b = isBoss ? Math.min(boss + 1, requiredBosses()) : boss;
-        long total = kills + 1;
-        if (p >= requiredKills() && b >= requiredBosses()) {
-            return new WeaponData(level + 1, total, 0, 0, luckBonus);
-        }
-        return new WeaponData(level, total, p, b, luckBonus);
+        long gain = isBoss ? RankPoints.BOSS_POINTS : RankPoints.KILL_POINTS;
+        return new WeaponData(points + gain, kills + 1, luckBonus, enchantPoints);
+    }
+
+    public WeaponData withRank(int rank) {
+        return new WeaponData(RankPoints.threshold(Math.max(0, rank)), kills, luckBonus, enchantPoints);
+    }
+
+    public WeaponData withLuckBonus(int bonus) {
+        return new WeaponData(points, kills, Math.max(0, bonus), enchantPoints);
+    }
+
+    /** Меняет засчитанные очки за чары и сдвигает общие очки на разницу */
+    public WeaponData withEnchantPoints(long newValue) {
+        long delta = newValue - enchantPoints;
+        return new WeaponData(Math.max(0, points + delta), kills, luckBonus, newValue);
     }
 }

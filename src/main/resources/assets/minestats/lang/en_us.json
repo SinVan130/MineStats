@@ -11,7 +11,8 @@
   "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
   "examplemod.configuration.magicNumber": "Magic Number",
   "item.minestats.tempered_sword": "Tempered Sword",
-  "tooltip.minestats.level": "Level: %s",
   "tooltip.minestats.kills": "Kills: %s",
-  "tooltip.minestats.luck": "Luck bonus: +%s"
+  "tooltip.minestats.luck": "Luck: +%s",
+  "tooltip.minestats.rarity": "Rarity: %s",
+  "message.minestats.rankup": "Rarity up: %s"
 }
