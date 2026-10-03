@@ -1,5 +1,6 @@
 {
   "item.minestats.tempered_sword": "Закалённый меч",
   "tooltip.minestats.level": "Уровень: %s",
-  "tooltip.minestats.kills": "Убийств: %s"
+  "tooltip.minestats.kills": "Убийств: %s",
+  "tooltip.minestats.luck": "Бонус удачи: +%s"
 }

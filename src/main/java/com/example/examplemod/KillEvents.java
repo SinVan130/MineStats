@@ -34,7 +34,7 @@ public class KillEvents {
         if (!(event.getSource().getEntity() instanceof ServerPlayer player)) return;
 
         ItemStack stack = player.getMainHandItem();
-        if (!(stack.getItem() instanceof TemperedSword)) return;
+        if (!WeaponUtil.isLevelable(stack)) return;
 
         boolean isBoss = event.getEntity().getType().is(Tags.EntityTypes.BOSSES);
 
@@ -43,6 +43,7 @@ public class KillEvents {
         stack.set(ModDataComponents.WEAPON_DATA.get(), next);
 
         if (next.level() > data.level()) {
+            WeaponUtil.updateAttributes(stack);
             player.displayClientMessage(
                     Component.translatable("message." + ExampleMod.MODID + ".levelup", next.level()), true);
         }
