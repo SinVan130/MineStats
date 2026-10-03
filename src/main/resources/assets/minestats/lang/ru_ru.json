@@ -1,8 +1,27 @@
 {
-  "item.minestats.tempered_sword": "Закалённый меч",
-  "tooltip.minestats.level": "Уровень: %s",
+  "tooltip.minestats.rarity": "Редкость: %s",
   "tooltip.minestats.kills": "Убийств: %s",
   "tooltip.minestats.luck": "Удача: +%s",
-  "tooltip.minestats.rarity": "Редкость: %s",
-  "message.minestats.rankup": "Редкость повышена: %s"
+  "message.minestats.rankup": "Редкость повышена: %s",
+
+  "passive.minestats.attack_speed": "Скорость атаки",
+  "passive.minestats.crit": "Шанс крита",
+  "passive.minestats.reach": "Дальность",
+  "passive.minestats.lifesteal": "Вампиризм",
+  "passive.minestats.might": "Мощь",
+  "passive.minestats.luck": "Удача",
+
+  "temp.minestats.ignite": "Огненный удар",
+  "temp.minestats.levitation": "Левитирующий удар",
+  "temp.minestats.poison": "Отравленный клинок",
+  "temp.minestats.weakness": "Ослабляющий клинок",
+  "temp.minestats.slowness": "Леденящий клинок",
+  "temp.minestats.glowing": "Раскрывающий удар",
+  "temp.minestats.strength": "Усиленный удар",
+  "temp.minestats.regeneration": "Похищение жизни",
+  "temp.minestats.luck": "Фортуна",
+
+  "tooltip.minestats.hint_material": "Кузнечный стол: %s (%s за уровень)",
+  "tooltip.minestats.hint_potion": "Кузнечный стол: наложить на оружие",
+  "tooltip.minestats.slots": "Улучшения: %s"
 }

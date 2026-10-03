@@ -35,6 +35,7 @@ public class ExampleMod {
         ModAttachments.register(modEventBus);
         ModConditions.register(modEventBus);
         ModLootModifiers.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
 

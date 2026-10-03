@@ -10,7 +10,7 @@ public class ProcSystem {
     public static final double PITY_STEP = 0.0025; // +0.25% за каждую неудачу подряд
     public static final double PITY_CAP = 0.05;    // максимум +5%
     public static final double MAX_CHANCE = 0.95;  // гарантированного срабатывания нет
-    public static final boolean DEBUG = true;      // показывать броски над хотбаром
+    public static final boolean DEBUG = false;      // показывать броски над хотбаром
 
     /** Шанс с учётом удачи: при удаче 1 равен базовому */
     public static double luckChance(Player player, double base) {

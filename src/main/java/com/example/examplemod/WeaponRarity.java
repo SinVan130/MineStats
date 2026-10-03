@@ -12,17 +12,19 @@ public class WeaponRarity {
     private static final int[] COLORS = {
             0xA66CFF, 0x4D9DFF, 0x2DD4BF, 0x84E05A, 0xFF5A5F, 0xFFC83D
     };
+    private static final int F_COLOR = 0x9A8C84;
     private static final int BEYOND_S_END = 0xFF4FD8;
 
     public static String name(int rank) {
-        if (rank < 0) rank = 0;
+        if (rank < 0) return "F";
         if (rank < LETTERS.length) return LETTERS[rank];
         int plus = rank - S_RANK;
         return plus <= 3 ? "S" + "+".repeat(plus) : "S+" + plus;
     }
 
     public static int rgb(int rank) {
-        if (rank <= S_RANK) return COLORS[Math.max(rank, 0)];
+        if (rank < 0) return F_COLOR;
+        if (rank <= S_RANK) return COLORS[rank];
         float t = Math.min(1f, (rank - S_RANK) / 8f);
         return lerp(COLORS[S_RANK], BEYOND_S_END, t);
     }
@@ -43,8 +45,9 @@ public class WeaponRarity {
         return Component.literal(name(rank)).withStyle(style(rank));
     }
 
-    /** Бонус к урону: до S по +1 за ранг, после S затухающая прибавка */
+    /** Бонус к урону: F и E без бонуса, до S по +1 за ранг, после S затухающая прибавка */
     public static double damageBonus(int rank) {
+        if (rank <= 0) return 0.0;
         double main = Math.min(rank, S_RANK) * 1.0;
         double extra = rank > S_RANK ? 0.6 * Math.sqrt(rank - S_RANK) : 0.0;
         return main + extra;

@@ -28,7 +28,7 @@ public class SwordCommands {
 
         event.getDispatcher().register(Commands.literal("swordrank")
                 .requires(s -> s.hasPermission(2))
-                .then(Commands.argument("value", IntegerArgumentType.integer(0, 200))
+                .then(Commands.argument("value", IntegerArgumentType.integer(-1, 200))
                         .executes(ctx -> {
                             ServerPlayer p = ctx.getSource().getPlayerOrException();
                             ItemStack stack = p.getMainHandItem();
