@@ -1,0 +1,5 @@
+{
+  "title": { "sounds": [ { "name": "minestats:title", "stream": false } ] },
+  "rank_up": { "sounds": [ { "name": "minestats:rank_up", "stream": false } ] },
+  "lvl_up": { "sounds": [ { "name": "minestats:lvl_up", "stream": false } ] }
+}

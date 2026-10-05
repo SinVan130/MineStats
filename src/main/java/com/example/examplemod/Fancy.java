@@ -23,7 +23,6 @@ public class Fancy {
     /** Рост ранга оружия */
     public static void rankUp(ServerPlayer p, int rank) {
         burst(p, WeaponRarity.rgb(rank));
-        p.level().playSound(null, p.blockPosition(), SoundEvents.PLAYER_LEVELUP,
-                SoundSource.PLAYERS, 0.6f, 0.9f);
+        ModSounds.play(p, ModSounds.RANK_UP);
     }
 }

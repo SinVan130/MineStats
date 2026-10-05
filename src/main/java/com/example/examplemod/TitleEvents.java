@@ -53,8 +53,7 @@ public class TitleEvents {
                     def.clickableName(def.description()), WeaponRarity.component(def.rank()));
             p.sendSystemMessage(msg);
             p.displayClientMessage(msg, true);
-            p.level().playSound(null, p.blockPosition(), SoundEvents.PLAYER_LEVELUP,
-                    SoundSource.PLAYERS, 0.7f, 1.4f);
+            ModSounds.play(p, ModSounds.TITLE);
             Fancy.burst(p, WeaponRarity.rgb(def.rank()));
         }
         return true;

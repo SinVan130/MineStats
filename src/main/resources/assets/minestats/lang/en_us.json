@@ -263,7 +263,7 @@
   "gui.minestats.enchant.legend": "cost / mana needed",
   "gui.minestats.enchant.free": "Creative: free",
 
-  "stat.minestats.vitality.effect": "+1 health per point",
+  "stat.minestats.vitality.effect": "+0.5 health per point",
   "stat.minestats.strength.effect": "+1% damage per point",
   "stat.minestats.dexterity.effect": "Attack and move speed",
   "stat.minestats.intelligence.effect": "+5 mana, faster regeneration",

@@ -22,7 +22,7 @@ public class StatEffects {
 
     public static void apply(ServerPlayer p) {
         PlayerStats s = p.getData(ModAttachments.PLAYER_STATS);
-        set(p, Attributes.MAX_HEALTH, VIT, (s.vitality() - PlayerStats.BASE) * 1.0, Operation.ADD_VALUE);
+        set(p, Attributes.MAX_HEALTH, VIT, (s.vitality() - PlayerStats.BASE) * 0.5, Operation.ADD_VALUE);
         set(p, Attributes.ATTACK_DAMAGE, STR, (s.strength() - PlayerStats.BASE) * 0.01, Operation.ADD_MULTIPLIED_TOTAL);
         set(p, Attributes.ATTACK_SPEED, DEX_SPEED, (s.dexterity() - PlayerStats.BASE) * 0.01, Operation.ADD_VALUE);
         set(p, Attributes.MOVEMENT_SPEED, DEX_MOVE, (s.dexterity() - PlayerStats.BASE) * 0.002, Operation.ADD_MULTIPLIED_BASE);

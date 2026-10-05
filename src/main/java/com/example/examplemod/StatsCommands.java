@@ -93,6 +93,8 @@ public class StatsCommands {
         p.giveExperiencePoints(-cost);
         p.setData(ModAttachments.PLAYER_STATS, next);
         StatEffects.apply(p);
+        Fancy.burst(p, stat.rgb);
+        ModSounds.play(p, ModSounds.LVL_UP);
         p.sendSystemMessage(Component.translatable(key("levelup"),
                         Component.literal(String.valueOf(next.level())).withStyle(color(GOLD)),
                         stat.displayName(),

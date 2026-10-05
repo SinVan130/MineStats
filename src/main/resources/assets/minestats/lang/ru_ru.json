@@ -254,7 +254,7 @@
   "gui.minestats.enchant.legend": "цена / нужно маны",
   "gui.minestats.enchant.free": "Креатив: бесплатно",
 
-  "stat.minestats.vitality.effect": "+1 к здоровью за очко",
+  "stat.minestats.vitality.effect": "+0,5 к здоровью за очко",
   "stat.minestats.strength.effect": "+1% к урону за очко",
   "stat.minestats.dexterity.effect": "Скорость атаки и бега",
   "stat.minestats.intelligence.effect": "+5 к мане, быстрее восстановление",
