@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.armor",
+  "amount": 1.0,
+  "operation": "add_value",
+  "name": "Решимость",
+  "description": "+1 к броне"
+}

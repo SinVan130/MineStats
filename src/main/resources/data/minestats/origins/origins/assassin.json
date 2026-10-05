@@ -1,0 +1,15 @@
+{
+  "name": {
+    "text": "Ассасин"
+  },
+  "description": {
+    "text": "Смертельно быстрый одиночка: бьёт сильнее и двигается стремительно."
+  },
+  "icon": "minecraft:ender_pearl",
+  "impact": "low",
+  "powers": [
+    "minestats:assassin_edge",
+    "minestats:assassin_stride",
+    "minestats:assassin_mark"
+  ]
+}

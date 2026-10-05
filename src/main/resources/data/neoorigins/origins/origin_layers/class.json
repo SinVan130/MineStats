@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "origins": [
+    "minestats:warrior",
+    "minestats:tank",
+    "minestats:archer",
+    "minestats:assassin",
+    "minestats:berserker",
+    "minestats:znakhar",
+    "minestats:hero",
+    "minestats:samurai"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.movement_speed",
+  "amount": 0.05,
+  "operation": "add_multiplied_base",
+  "name": "Скользящий шаг",
+  "description": "+5% к скорости передвижения"
+}

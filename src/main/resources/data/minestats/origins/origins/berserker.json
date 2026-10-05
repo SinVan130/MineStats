@@ -1,0 +1,16 @@
+{
+  "name": {
+    "text": "Берсерк"
+  },
+  "description": {
+    "text": "Ярость вместо защиты: огромный урон, но броня почти не держит."
+  },
+  "icon": "minecraft:iron_axe",
+  "impact": "low",
+  "powers": [
+    "minestats:berserker_rage",
+    "minestats:berserker_vigor",
+    "minestats:berserker_reckless",
+    "minestats:berserker_mark"
+  ]
+}

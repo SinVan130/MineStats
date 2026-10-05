@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.max_health",
+  "amount": 6.0,
+  "operation": "add_value",
+  "name": "Выносливость",
+  "description": "+3 сердца к здоровью"
+}

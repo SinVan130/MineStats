@@ -1,0 +1,15 @@
+{
+  "name": {
+    "text": "Воин"
+  },
+  "description": {
+    "text": "Закалённый боец ближнего боя: сильнее бьёт и лучше держит броню."
+  },
+  "icon": "minecraft:iron_sword",
+  "impact": "low",
+  "powers": [
+    "minestats:warrior_strength",
+    "minestats:warrior_armor",
+    "minestats:warrior_mark"
+  ]
+}

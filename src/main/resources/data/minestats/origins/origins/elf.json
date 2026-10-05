@@ -1,0 +1,14 @@
+{
+  "name": {
+    "text": "Эльф"
+  },
+  "description": {
+    "text": "Ловкий народ леса: быстрее остальных, но с хрупким телосложением."
+  },
+  "icon": "minecraft:bow",
+  "impact": "low",
+  "powers": [
+    "minestats:elf_swiftness",
+    "minestats:elf_frailty"
+  ]
+}

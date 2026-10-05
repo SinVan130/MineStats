@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.attack_speed",
+  "amount": 0.08,
+  "operation": "add_multiplied_base",
+  "name": "Выдержка",
+  "description": "+8% к скорости атаки"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.movement_speed",
+  "amount": 0.12,
+  "operation": "add_multiplied_base",
+  "name": "Бесшумный шаг",
+  "description": "+12% к скорости передвижения"
+}

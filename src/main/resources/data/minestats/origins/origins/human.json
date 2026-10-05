@@ -1,0 +1,14 @@
+{
+  "name": {
+    "text": "Человек"
+  },
+  "description": {
+    "text": "Универсальный народ без слабостей: чуть быстрее бьёт и чаще везёт."
+  },
+  "icon": "minecraft:player_head",
+  "impact": "none",
+  "powers": [
+    "minestats:human_versatility",
+    "minestats:human_fortune"
+  ]
+}

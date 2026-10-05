@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.oxygen_bonus",
+  "amount": 0.006,
+  "operation": "add_value",
+  "name": "Путь класса",
+  "description": "Определяет дерево умений класса"
+}

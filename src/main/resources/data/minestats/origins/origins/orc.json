@@ -1,0 +1,15 @@
+{
+  "name": {
+    "text": "Орк"
+  },
+  "description": {
+    "text": "Могучий и выносливый народ, но тяжёлый на подъём."
+  },
+  "icon": "minecraft:bone",
+  "impact": "medium",
+  "powers": [
+    "minestats:orc_might",
+    "minestats:orc_hardiness",
+    "minestats:orc_heavy"
+  ]
+}

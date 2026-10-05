@@ -1,0 +1,16 @@
+{
+  "name": {
+    "text": "Самурай"
+  },
+  "description": {
+    "text": "Мастер клинка и лука: одинаково опасен вблизи и на расстоянии."
+  },
+  "icon": "minecraft:golden_sword",
+  "impact": "low",
+  "powers": [
+    "minestats:samurai_discipline",
+    "minestats:samurai_poise",
+    "minestats:samurai_footwork",
+    "minestats:samurai_mark"
+  ]
+}

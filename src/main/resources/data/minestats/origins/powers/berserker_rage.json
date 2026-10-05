@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.attack_damage",
+  "amount": 2.0,
+  "operation": "add_value",
+  "name": "Ярость",
+  "description": "+2 к урону"
+}

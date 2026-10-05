@@ -1,0 +1,15 @@
+{
+  "name": {
+    "text": "Лучник"
+  },
+  "description": {
+    "text": "Быстрый стрелок: лёгок на подъём и быстро перезаряжается."
+  },
+  "icon": "minecraft:arrow",
+  "impact": "low",
+  "powers": [
+    "minestats:archer_agility",
+    "minestats:archer_focus",
+    "minestats:archer_mark"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": {
+    "text": "Герой"
+  },
+  "description": {
+    "text": "Вдохновляющий боец: сильнее всего, когда на нём действуют усиления. Главные способности придут из дерева умений."
+  },
+  "icon": "minecraft:golden_apple",
+  "impact": "low",
+  "powers": [
+    "minestats:hero_valor",
+    "minestats:hero_resolve",
+    "minestats:hero_vigor",
+    "minestats:hero_mark"
+  ]
+}

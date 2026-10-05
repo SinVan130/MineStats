@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.luck",
+  "amount": 1.0,
+  "operation": "add_value",
+  "name": "Чутьё на травы",
+  "description": "+1 к удаче"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.attack_damage",
+  "amount": 1.0,
+  "operation": "add_value",
+  "name": "Острие",
+  "description": "+1 к урону"
+}

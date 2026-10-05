@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.attack_speed",
+  "amount": 0.05,
+  "operation": "add_multiplied_base",
+  "name": "Универсальность",
+  "description": "+5% к скорости атаки"
+}

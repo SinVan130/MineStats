@@ -1,0 +1,16 @@
+{
+  "name": {
+    "text": "Танк"
+  },
+  "description": {
+    "text": "Живая стена: много здоровья и брони, почти не отлетает от ударов."
+  },
+  "icon": "minecraft:shield",
+  "impact": "low",
+  "powers": [
+    "minestats:tank_vitality",
+    "minestats:tank_plating",
+    "minestats:tank_stand",
+    "minestats:tank_mark"
+  ]
+}

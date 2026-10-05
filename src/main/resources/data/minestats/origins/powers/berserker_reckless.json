@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.armor",
+  "amount": -2.0,
+  "operation": "add_value",
+  "name": "Безрассудство",
+  "description": "-2 к броне"
+}

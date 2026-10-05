@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "minecraft:generic.armor",
+  "amount": 3.0,
+  "operation": "add_value",
+  "name": "Тяжёлая броня",
+  "description": "+3 к броне"
+}

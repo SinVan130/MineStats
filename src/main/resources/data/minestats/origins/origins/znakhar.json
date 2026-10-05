@@ -1,0 +1,15 @@
+{
+  "name": {
+    "text": "Знахарь"
+  },
+  "description": {
+    "text": "Мастер ядов и отваров: держится на хитрости, а не на силе. Главные способности придут из дерева умений."
+  },
+  "icon": "minecraft:fermented_spider_eye",
+  "impact": "low",
+  "powers": [
+    "minestats:znakhar_vigor",
+    "minestats:znakhar_fortune",
+    "minestats:znakhar_mark"
+  ]
+}

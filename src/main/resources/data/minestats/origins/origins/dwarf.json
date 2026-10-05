@@ -1,0 +1,15 @@
+{
+  "name": {
+    "text": "Дварф"
+  },
+  "description": {
+    "text": "Приземистый и упрямый народ гор: прочная кожа, но медленный шаг."
+  },
+  "icon": "minecraft:iron_pickaxe",
+  "impact": "medium",
+  "powers": [
+    "minestats:dwarf_stoneskin",
+    "minestats:dwarf_stubborn",
+    "minestats:dwarf_short_legs"
+  ]
+}
