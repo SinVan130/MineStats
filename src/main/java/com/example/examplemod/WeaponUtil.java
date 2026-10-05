@@ -28,6 +28,11 @@ public class WeaponUtil {
         double damage = WeaponRarity.damageBonus(data.rank()) + 0.5 * data.passiveLevel("might");
         double speed = 0.025 * data.passiveLevel("attack_speed");
         double reach = 0.25 * data.passiveLevel("reach");
+        if (data.rank() >= WeaponRarity.S_RANK) {
+            stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+        } else {
+            stack.remove(DataComponents.ENCHANTMENT_GLINT_OVERRIDE);
+        }
 
         ItemAttributeModifiers current = stack.getOrDefault(
                 DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);

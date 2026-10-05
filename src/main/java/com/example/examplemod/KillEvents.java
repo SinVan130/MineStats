@@ -47,6 +47,7 @@ public class KillEvents {
             player.displayClientMessage(
                     Component.translatable("message." + ExampleMod.MODID + ".rankup",
                             WeaponRarity.component(next.rank())), true);
+            Fancy.rankUp(player, next.rank());
         }
     }
 }

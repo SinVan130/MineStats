@@ -64,6 +64,8 @@ public class TooltipEvents {
         // Название окрашиваем в цвет редкости
         if (!tip.isEmpty()) {
             tip.set(0, tip.get(0).copy().withStyle(WeaponRarity.style(d.rank())));
+            tip.add(1, Component.literal("              ")
+                    .withStyle(WeaponRarity.style(d.rank()).withStrikethrough(true)));
         }
 
         tip.add(line("rarity", WeaponRarity.component(d.rank())));

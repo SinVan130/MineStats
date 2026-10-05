@@ -18,6 +18,7 @@ public class LuckUtil {
 
     /** Полная удача игрока. Позже сюда добавится стат «Удача». */
     public static int getLuck(Player player) {
-        return PLAYER_BASE_LUCK + swordBonus(player);
+        int stat = player.getData(ModAttachments.PLAYER_STATS).luck() - PlayerStats.BASE;
+        return Math.max(1, PLAYER_BASE_LUCK + stat + swordBonus(player) + TitleEvents.luckBonus(player));
     }
 }
