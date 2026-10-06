@@ -16,6 +16,12 @@ public class ModDataComponents {
                     .networkSynchronized(WeaponData.STREAM_CODEC)
                     .build());
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<EquipmentData>> EQUIPMENT_DATA =
+            DATA_COMPONENTS.register("equipment_data", () -> DataComponentType.<EquipmentData>builder()
+                    .persistent(EquipmentData.CODEC)
+                    .networkSynchronized(EquipmentData.STREAM_CODEC)
+                    .build());
+
     public static void register(IEventBus bus) {
         DATA_COMPONENTS.register(bus);
     }

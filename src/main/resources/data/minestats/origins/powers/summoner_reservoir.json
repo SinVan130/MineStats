@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "irons_spellbooks:max_mana",
+  "amount": 75,
+  "operation": "add_value",
+  "name": "Запас силы",
+  "description": "+75 к максимальной мане"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "irons_spellbooks:cooldown_reduction",
+  "amount": 0.15,
+  "operation": "add_multiplied_base",
+  "name": "Быстрое восстановление",
+  "description": "-15% к перезарядке заклинаний"
+}

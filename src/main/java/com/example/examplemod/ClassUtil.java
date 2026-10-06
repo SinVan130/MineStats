@@ -9,7 +9,8 @@ public class ClassUtil {
 
     /** Порядок совпадает с метками в аддоне: warrior = 0.001, tank = 0.002 и так далее */
     public static final String[] CLASSES = {
-            "warrior", "tank", "archer", "assassin", "berserker", "znakhar", "hero", "samurai"
+            "warrior", "tank", "archer", "assassin", "berserker", "znakhar", "hero", "samurai",
+            "mage", "summoner"
     };
 
     public static final int POINT_EVERY = 5;   // очко умений каждые 5 уровней
@@ -41,6 +42,8 @@ public class ClassUtil {
             case "znakhar" -> 0x2DD4BF;
             case "hero" -> 0xFFC83D;
             case "samurai" -> 0xFDBA74;
+            case "mage" -> 0x22D3EE;
+            case "summoner" -> 0xE879F9;
             default -> 0x8E9AAF;
         };
     }

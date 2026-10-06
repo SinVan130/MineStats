@@ -1,5 +1,11 @@
 {
   "title": { "sounds": [ { "name": "minestats:title", "stream": false } ] },
   "rank_up": { "sounds": [ { "name": "minestats:rank_up", "stream": false } ] },
-  "lvl_up": { "sounds": [ { "name": "minestats:lvl_up", "stream": false } ] }
+  "lvl_up": {
+    "sounds": [
+      { "name": "minestats:lvl_up", "stream": false },
+      { "name": "minestats:lvl_up_2", "stream": false },
+      { "name": "minestats:lvl_up_3", "stream": false }
+    ]
+  }
 }

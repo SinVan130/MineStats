@@ -1,0 +1,47 @@
+{
+  "type": "neoorigins:condition_passive",
+  "interval": 10,
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:nbt",
+        "nbt": "{Tags:[\"ms_warrior_dread\"]}"
+      },
+      {
+        "type": "neoorigins:power_active",
+        "power": "minestats:warrior_parried"
+      }
+    ]
+  },
+  "entity_action": {
+    "type": "neoorigins:area_of_effect",
+    "radius": 4.0,
+    "bientity_action": {
+      "type": "neoorigins:and",
+      "actions": [
+        {
+          "type": "neoorigins:target_action",
+          "action": {
+            "type": "neoorigins:apply_effect",
+            "effects": [
+              {
+                "effect": "minecraft:slowness",
+                "duration": 40,
+                "amplifier": 1
+              },
+              {
+                "effect": "minecraft:weakness",
+                "duration": 40,
+                "amplifier": 0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "name": "Ореол ярости",
+  "description": "5 секунд после удачного парирования враги рядом замедляются и слабеют.",
+  "hidden": true
+}

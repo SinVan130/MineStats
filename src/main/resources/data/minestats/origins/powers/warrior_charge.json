@@ -1,0 +1,99 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 160,
+  "condition": {
+    "type": "neoorigins:nbt",
+    "nbt": "{Tags:[\"ms_warrior_charge\"]}"
+  },
+  "fail_action": {
+    "type": "neoorigins:execute_command",
+    "command": "title @s actionbar {\"text\":\"Навык не изучен\",\"color\":\"red\"}"
+  },
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:dash",
+        "strength": 1.8,
+        "allow_vertical": false
+      },
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:entity.player.attack.sweep",
+        "volume": 1.0,
+        "pitch": 1.0
+      },
+      {
+        "type": "neoorigins:spawn_particles",
+        "particle": "minecraft:cloud",
+        "count": 14,
+        "offset_y": 0.2,
+        "spread": {
+          "x": 0.3,
+          "y": 0.3,
+          "z": 0.3
+        }
+      },
+      {
+        "type": "neoorigins:delay",
+        "ticks": 5,
+        "action": {
+          "type": "neoorigins:and",
+          "actions": [
+            {
+              "type": "neoorigins:area_of_effect",
+              "radius": 3.5,
+              "bientity_action": {
+                "type": "neoorigins:and",
+                "actions": [
+                  {
+                    "type": "neoorigins:target_action",
+                    "action": {
+                      "type": "neoorigins:damage",
+                      "amount": 6.0
+                    }
+                  },
+                  {
+                    "type": "neoorigins:target_action",
+                    "action": {
+                      "type": "neoorigins:add_velocity",
+                      "y": 0.5
+                    }
+                  }
+                ]
+              },
+              "shape": {
+                "type": "cone",
+                "angle": 120
+              }
+            },
+            {
+              "type": "neoorigins:spawn_particles",
+              "particle": "minecraft:sweep_attack",
+              "count": 1,
+              "offset_y": 1.0,
+              "spread": {
+                "x": 0.1,
+                "y": 0.1,
+                "z": 0.1
+              }
+            },
+            {
+              "type": "neoorigins:play_sound",
+              "sound": "minecraft:entity.player.attack.knockback",
+              "volume": 1.0,
+              "pitch": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "cooldown_icon": "minecraft:feather",
+  "key": 1,
+  "resource_cost": "minestats:mana",
+  "resource_cost_amount": 15,
+  "name": "Натиск",
+  "description": "Рывок вперёд. В конце рывка удар по конусу перед вами: урон и подбрасывание.",
+  "hidden": true
+}

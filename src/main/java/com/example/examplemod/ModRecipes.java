@@ -14,6 +14,9 @@ public class ModRecipes {
     public static final Supplier<RecipeSerializer<WeaponUpgradeRecipe>> WEAPON_UPGRADE =
             SERIALIZERS.register("weapon_upgrade", WeaponUpgradeRecipe.Serializer::new);
 
+    public static final Supplier<RecipeSerializer<EquipmentUpgradeRecipe>> EQUIPMENT_UPGRADE =
+            SERIALIZERS.register("equipment_upgrade", EquipmentUpgradeRecipe.Serializer::new);
+
     public static void register(IEventBus bus) {
         SERIALIZERS.register(bus);
     }

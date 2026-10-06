@@ -1,5 +1,7 @@
 package com.example.examplemod;
 
+import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
@@ -9,31 +11,74 @@ import net.minecraft.world.entity.player.Player;
 
 public class ManaUtil {
 
-    public static final int LEVEL_MANA = 4;  // маны на один «уровень требования» слота
-    public static final int SLOT_MANA = 20;  // маны за ступень лазурита (слот 1/2/3 = 10/20/30)
     public static final int MANA_COLOR = 0x60A5FA;
     public static final int WARN_COLOR = 0xFB7185;
-    public static final int ANVIL_MANA = 5;  // маны за один уровень стоимости наковальни
-    public static final int ANVIL_COST_MULTIPLIER = 5;  // во сколько раз наковальня дороже ванили
 
-    public static int mana(Player p) {
-        return p.getData(ModAttachments.PLAYER_STATS).mana();
+    /**
+     * Получить текущую ману Iron's Spellbooks.
+     */
+    public static float mana(Player p) {
+        return MagicData.getPlayerMagicData(p).getMana();
     }
 
-    public static boolean spend(ServerPlayer p, int amount) {
-        PlayerStats s = p.getData(ModAttachments.PLAYER_STATS);
-        if (s.mana() < amount) return false;
-        p.setData(ModAttachments.PLAYER_STATS, s.withMana(s.mana() - amount));
+    /**
+     * Получить максимальную ману Iron's Spellbooks.
+     */
+    public static float maxMana(Player p) {
+        return (float) p.getAttributeValue(AttributeRegistry.MAX_MANA);
+    }
+
+    /**
+     * Установить ману.
+     */
+    public static void set(ServerPlayer p, float amount) {
+        MagicData data = MagicData.getPlayerMagicData(p);
+
+        float max = maxMana(p);
+
+        data.setMana(Math.max(0.0f, Math.min(amount, max)));
+    }
+
+    /**
+     * Добавить ману.
+     */
+    public static void add(ServerPlayer p, float amount) {
+        MagicData data = MagicData.getPlayerMagicData(p);
+
+        float max = maxMana(p);
+
+        data.setMana(Math.min(data.getMana() + amount, max));
+    }
+
+    /**
+     * Потратить ману.
+     *
+     * @return true, если маны хватило.
+     */
+    public static boolean spend(ServerPlayer p, float amount) {
+        MagicData data = MagicData.getPlayerMagicData(p);
+
+        if (data.getMana() < amount) {
+            return false;
+        }
+
+        data.setMana(data.getMana() - amount);
         return true;
     }
 
-    public static void add(ServerPlayer p, int amount) {
-        PlayerStats s = p.getData(ModAttachments.PLAYER_STATS);
-        p.setData(ModAttachments.PLAYER_STATS, s.withMana(s.mana() + amount));
+    /**
+     * Проверить, хватает ли маны.
+     */
+    public static boolean has(ServerPlayer p, float amount) {
+        return mana(p) >= amount;
     }
 
     public static MutableComponent message(String key, int rgb, Object... args) {
-        return Component.translatable("message." + ExampleMod.MODID + "." + key, args)
-                .withStyle(Style.EMPTY.withColor(TextColor.fromRgb(rgb)));
+        return Component.translatable(
+                "message." + ExampleMod.MODID + "." + key,
+                args
+        ).withStyle(
+                Style.EMPTY.withColor(TextColor.fromRgb(rgb))
+        );
     }
 }

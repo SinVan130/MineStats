@@ -1,0 +1,71 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "hit_dealt",
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:nbt",
+        "nbt": "{Tags:[\"ms_warrior_riposte\"]}"
+      },
+      {
+        "type": "neoorigins:power_active",
+        "power": "minestats:warrior_parried"
+      },
+      {
+        "type": "neoorigins:not",
+        "condition": {
+          "type": "neoorigins:power_active",
+          "power": "minestats:warrior_crit_guard"
+        }
+      }
+    ]
+  },
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:toggle",
+        "power": "minestats:warrior_parried",
+        "value": false
+      },
+      {
+        "type": "neoorigins:toggle",
+        "power": "minestats:warrior_crit_guard",
+        "value": true
+      },
+      {
+        "type": "neoorigins:target_action",
+        "action": {
+          "type": "neoorigins:damage",
+          "amount": 8.0
+        }
+      },
+      {
+        "type": "neoorigins:toggle",
+        "power": "minestats:warrior_crit_guard",
+        "value": false
+      },
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:entity.player.attack.crit",
+        "volume": 1.2,
+        "pitch": 0.8
+      },
+      {
+        "type": "neoorigins:spawn_particles",
+        "particle": "minecraft:crit",
+        "count": 20,
+        "offset_y": 1.0,
+        "spread": {
+          "x": 0.4,
+          "y": 0.4,
+          "z": 0.4
+        }
+      }
+    ]
+  },
+  "name": "Ответный удар",
+  "description": "После удачного парирования ваш следующий удар в течение 5 секунд наносит +8 урона.",
+  "hidden": true
+}

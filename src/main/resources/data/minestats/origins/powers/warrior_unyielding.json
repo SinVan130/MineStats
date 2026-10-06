@@ -1,0 +1,21 @@
+{
+  "type": "neoorigins:modify_damage",
+  "direction": "in",
+  "multiplier": 0.8,
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:nbt",
+        "nbt": "{Tags:[\"ms_warrior_unyielding\"]}"
+      },
+      {
+        "type": "neoorigins:has_effect",
+        "effect": "minecraft:strength"
+      }
+    ]
+  },
+  "name": "Несгибаемая стойка",
+  "description": "В боевой стойке вы получаете на 20% меньше урона.",
+  "hidden": true
+}

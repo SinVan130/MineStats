@@ -1,6 +1,9 @@
 package com.example.examplemod.mixin;
 
+import com.example.examplemod.EquipmentUpgrades;
+import com.example.examplemod.EquipmentUtil;
 import com.example.examplemod.WeaponUpgrades;
+import com.example.examplemod.WeaponUtil;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.SmithingMenu;
 import net.minecraft.world.item.ItemStack;
@@ -15,10 +18,22 @@ public abstract class SmithingMenuMixin {
     @Inject(method = "onTake", at = @At("HEAD"))
     private void minestats$consumeExtra(Player player, ItemStack stack, CallbackInfo ci) {
         SmithingMenu self = (SmithingMenu) (Object) this;
-        if (!self.getSlot(0).getItem().isEmpty()) return; // обычные рецепты не трогаем
+
+        if (!self.getSlot(0).getItem().isEmpty()) return;
+
         ItemStack base = self.getSlot(1).getItem();
         ItemStack addition = self.getSlot(2).getItem();
-        int extra = WeaponUpgrades.totalCost(base, addition) - 1; // один предмет спишет ваниль
+
+        int extra;
+
+        if (WeaponUtil.isLevelable(base) && WeaponUpgrades.isAddition(addition)) {
+            extra = WeaponUpgrades.totalCost(base, addition) - 1;
+        } else if (EquipmentUtil.isArmor(base) && EquipmentUpgrades.isUsable(addition)) {
+            extra = EquipmentUpgrades.totalCost(base, addition) - 1;
+        } else {
+            return;
+        }
+
         if (extra > 0) addition.shrink(extra);
     }
 }

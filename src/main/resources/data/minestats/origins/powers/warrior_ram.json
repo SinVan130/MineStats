@@ -1,0 +1,19 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "power_activated",
+  "power": "minestats:warrior_charge",
+  "condition": {
+    "type": "neoorigins:nbt",
+    "nbt": "{Tags:[\"ms_warrior_ram\"]}"
+  },
+  "entity_action": {
+    "type": "neoorigins:apply_effect",
+    "effect": "minecraft:resistance",
+    "duration": 60,
+    "amplifier": 1,
+    "show_icon": true
+  },
+  "name": "Таран",
+  "description": "После Натиска вы 3 секунды получаете Сопротивление II.",
+  "hidden": true
+}

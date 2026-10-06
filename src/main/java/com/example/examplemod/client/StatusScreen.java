@@ -15,6 +15,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import io.redspace.ironsspellbooks.player.ClientMagicData;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -192,21 +193,38 @@ public class StatusScreen extends Screen {
 
         fit(g, tr("class", classComponent(cls)), lx + 8, y + 6, LW - 16, Ui.MUTED, 0);
         fit(g, tr("level", s.level()), lx + 8, y + 17, 90, Ui.ACCENT, 0);
-        fit(g, tr("mana", s.mana(), s.maxMana()), lx + LW - 8, y + 17, 96, Ui.MANA, 1);
-        fit(g, tr("next_level", cost, have), lx + 8, y + 28, LW - 16, have >= cost ? Ui.GOOD : Ui.MUTED, 0);
-        Ui.bar(g, lx + 8, y + 40, LW - 16, 7, (float) s.mana() / Math.max(1, s.maxMana()), Ui.MANA);
+        int mana = ClientMagicData.getPlayerMana();
+        float maxMana = ManaUtil.maxMana(p);
+
+        fit(g, tr("mana", mana, Math.round(maxMana)),
+                lx + LW - 8, y + 17, 96, Ui.MANA, 1);
+
+        Ui.bar(g, lx + 8, y + 40, LW - 16, 7,
+                mana / Math.max(1.0f, maxMana), Ui.MANA);
+
+        fit(g, tr("next_level", cost, have), lx + 8, y + 28,
+                LW - 16, have >= cost ? Ui.GOOD : Ui.MUTED, 0);
 
         Stat[] stats = Stat.values();
         for (int i = 0; i < stats.length; i++) {
             Stat st = stats[i];
             int ry = y + 54 + i * 26;
             int val = s.get(st);
+            int bonus = StatBonus.get(p, st);
             int col = Ui.opaque(st.rgb);
 
             fit(g, st.displayName(), lx + 8, ry, 100, col, 0);
             String v = String.valueOf(val);
             g.drawString(font, v, lx + 8 + 120 - font.width(v), ry, Ui.TEXT, false);
-            Ui.bar(g, lx + 8, ry + 10, 120, 5, val / (float) PlayerStats.MAX_STAT, col);
+            if (bonus > 0) {
+                String b = "+" + bonus;
+                int bxText = lx + 8 + 120 + 3;
+                g.drawString(font, b, bxText, ry, Ui.GOOD, false);
+                if (isHover(bxText, ry - 1, font.width(b), 10)) {
+                    tooltip = List.of(tr("bonus", bonus));
+                }
+            }
+            Ui.bar(g, lx + 8, ry + 10, 120, 5, (val + bonus) / (float) PlayerStats.MAX_STAT, col);
             fit(g, Component.translatable("stat." + ExampleMod.MODID + "." + st.id + ".effect"),
                     lx + 8, ry + 17, 150, Ui.MUTED, 0);
 

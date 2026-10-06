@@ -1,0 +1,48 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 1800,
+  "condition": {
+    "type": "neoorigins:nbt",
+    "nbt": "{Tags:[\"ms_warrior_stance\"]}"
+  },
+  "fail_action": {
+    "type": "neoorigins:execute_command",
+    "command": "title @s actionbar {\"text\":\"Навык не изучен\",\"color\":\"red\"}"
+  },
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:apply_effect",
+        "effect": "minecraft:strength",
+        "duration": 1200,
+        "amplifier": 0,
+        "show_icon": true
+      },
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:block.anvil.land",
+        "volume": 0.8,
+        "pitch": 1.5
+      },
+      {
+        "type": "neoorigins:spawn_particles",
+        "particle": "minecraft:angry_villager",
+        "count": 8,
+        "offset_y": 1.5,
+        "spread": {
+          "x": 0.4,
+          "y": 0.4,
+          "z": 0.4
+        }
+      }
+    ]
+  },
+  "cooldown_icon": "minecraft:iron_sword",
+  "key": 3,
+  "resource_cost": "minestats:mana",
+  "resource_cost_amount": 30,
+  "name": "Боевая стойка",
+  "description": "Минута боевой стойки: Сила I и 30% шанс критического удара (+5 урона). Действует, пока на вас висит эффект силы.",
+  "hidden": true
+}

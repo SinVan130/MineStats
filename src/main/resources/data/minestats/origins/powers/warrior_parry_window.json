@@ -1,0 +1,7 @@
+{
+  "type": "neoorigins:toggle",
+  "default": false,
+  "name": "Окно парирования",
+  "description": "Служебный флаг.",
+  "hidden": true
+}

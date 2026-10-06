@@ -1,0 +1,35 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "power_activated",
+  "power": "minestats:warrior_charge",
+  "condition": {
+    "type": "neoorigins:nbt",
+    "nbt": "{Tags:[\"ms_warrior_hamstring\"]}"
+  },
+  "entity_action": {
+    "type": "neoorigins:delay",
+    "ticks": 5,
+    "action": {
+      "type": "neoorigins:area_of_effect",
+      "radius": 3.5,
+      "bientity_action": {
+        "type": "neoorigins:and",
+        "actions": [
+          {
+            "type": "neoorigins:target_action",
+            "action": {
+              "type": "neoorigins:apply_effect",
+              "effect": "minecraft:slowness",
+              "duration": 60,
+              "amplifier": 2,
+              "show_icon": true
+            }
+          }
+        ]
+      }
+    }
+  },
+  "name": "Подсечка",
+  "description": "Враги, задетые Натиском, замедляются на 3 секунды.",
+  "hidden": true
+}

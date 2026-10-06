@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:attribute_modifier",
+  "attribute": "irons_spellbooks:summon_damage",
+  "amount": 0.25,
+  "operation": "add_multiplied_base",
+  "name": "Власть над призванными",
+  "description": "+25% к урону призванных существ"
+}

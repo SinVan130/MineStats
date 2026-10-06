@@ -10,6 +10,24 @@
   "powers": [
     "minestats:warrior_strength",
     "minestats:warrior_armor",
-    "minestats:warrior_mark"
+    "minestats:warrior_mark",
+    "minestats:mana",
+    "minestats:warrior_parry_window",
+    "minestats:warrior_parried",
+    "minestats:warrior_crit_guard",
+    "minestats:warrior_charge",
+    "minestats:warrior_parry",
+    "minestats:warrior_parry_reaction",
+    "minestats:warrior_stance",
+    "minestats:warrior_stance_crit",
+    "minestats:warrior_ultimate",
+    "minestats:warrior_ram",
+    "minestats:warrior_hamstring",
+    "minestats:warrior_riposte",
+    "minestats:warrior_dread",
+    "minestats:warrior_bloodlust",
+    "minestats:warrior_unyielding",
+    "minestats:warrior_storm_echo",
+    "minestats:warrior_fury_shield"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "name": {
+    "text": "Призыватель"
+  },
+  "description": {
+    "text": "Командует призванными существами: они бьют сильнее, а сам он держится позади."
+  },
+  "icon": "minecraft:totem_of_undying",
+  "impact": "medium",
+  "powers": [
+    "minestats:summoner_command",
+    "minestats:summoner_reservoir",
+    "minestats:summoner_frail",
+    "minestats:summoner_mark"
+  ]
+}

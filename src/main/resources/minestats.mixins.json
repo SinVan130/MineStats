@@ -3,14 +3,7 @@
   "minVersion": "0.8",
   "package": "com.example.examplemod.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "SmithingMenuMixin",
-    "EnchantmentMenuMixin",
-    "PlayerMixin",
-    "AnvilMenuMixin"
-  ],
-  "client": [
-    "AnvilScreenMixin"
+  "mixins": ["SmithingMenuMixin"
   ],
   "injectors": {
     "defaultRequire": 1

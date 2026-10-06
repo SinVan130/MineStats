@@ -1,0 +1,19 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "power_activated",
+  "power": "minestats:warrior_ultimate",
+  "condition": {
+    "type": "neoorigins:nbt",
+    "nbt": "{Tags:[\"ms_warrior_fury_shield\"]}"
+  },
+  "entity_action": {
+    "type": "neoorigins:apply_effect",
+    "effect": "minecraft:absorption",
+    "duration": 200,
+    "amplifier": 2,
+    "show_icon": true
+  },
+  "name": "Щит ярости",
+  "description": "Клинковый шторм даёт вам Поглощение III на 10 секунд.",
+  "hidden": true
+}

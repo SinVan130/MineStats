@@ -270,5 +270,15 @@
   "class.minestats.hero": "Герой",
   "class.minestats.samurai": "Самурай",
   "gui.minestats.class": "Класс: %s",
-  "gui.minestats.header_class": "%s  •  Ур. %s"
+  "gui.minestats.header_class": "%s  •  Ур. %s",
+  "tooltip.minestats.rank": "Ранг: %s",
+  "stat.minestats.intelligence": "Интеллект",
+  "stat.minestats.strength": "Сила",
+  "stat.minestats.luck": "Удача",
+  "stat.minestats.dexterity": "Ловкость",
+  "stat.minestats.vitality": "Живучесть",
+  "tooltip.minestats.hint_armor_material": "Улучшение брони: %s (%s за уровень)",
+  "gui.minestats.bonus": "Бонус>: +%s",
+  "class.minestats.mage": "Маг",
+  "class.minestats.summoner": "Призыватель"
 }

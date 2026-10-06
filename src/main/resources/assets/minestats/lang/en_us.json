@@ -279,5 +279,17 @@
   "class.minestats.hero": "Hero",
   "class.minestats.samurai": "Samurai",
   "gui.minestats.class": "Class: %s",
-  "gui.minestats.header_class": "%s  •  Lv. %s"
+  "gui.minestats.header_class": "%s  •  Lv. %s",
+  "tooltip.minestats.rank": "Rank: %s",
+  "tooltip.minestats.upgrades": "Upgrades: %s/%s",
+  "tooltip.minestats.upgrade_line": "%s %s",
+  "stat.minestats.intelligence": "Intelligence",
+  "stat.minestats.strength": "Strength",
+  "stat.minestats.luck": "Luck",
+  "stat.minestats.dexterity": "Dexterity",
+  "stat.minestats.vitality": "Vitality",
+  "tooltip.minestats.hint_armor_material": "Armor upgrade: %s (%s per level)",
+  "gui.minestats.bonus": "Bonus: +%s",
+  "class.minestats.mage": "Mage",
+  "class.minestats.summoner": "Summoner"
 }

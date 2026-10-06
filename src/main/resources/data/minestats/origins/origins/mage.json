@@ -1,0 +1,16 @@
+{
+  "name": {
+    "text": "Маг"
+  },
+  "description": {
+    "text": "Повелитель чистой магии: огромный запас маны и быстрая перезарядка заклинаний."
+  },
+  "icon": "minecraft:blaze_rod",
+  "impact": "medium",
+  "powers": [
+    "minestats:mage_reservoir",
+    "minestats:mage_recovery",
+    "minestats:mage_frail",
+    "minestats:mage_mark"
+  ]
+}

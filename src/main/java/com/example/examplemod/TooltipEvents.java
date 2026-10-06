@@ -10,6 +10,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
+import java.util.List;
+
 @EventBusSubscriber(modid = ExampleMod.MODID, value = Dist.CLIENT)
 public class TooltipEvents {
 
@@ -40,13 +42,21 @@ public class TooltipEvents {
                 .withStyle(color(LABEL));
     }
 
+    /** Название в цвет редкости + разделитель под ним */
+    private static void decorateHeader(List<Component> tip, int rank) {
+        if (tip.isEmpty()) return;
+        tip.set(0, tip.get(0).copy().withStyle(WeaponRarity.style(rank)));
+        tip.add(1, Component.literal("              ")
+                .withStyle(WeaponRarity.style(rank).withStrikethrough(true)));
+    }
+
     @SubscribeEvent
     public static void onTooltip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
         var tip = event.getToolTip();
         String id = ExampleMod.MODID;
 
-        // Подсказки для материалов и зелий
+        // Подсказки для материалов и зелий (оружие)
         WeaponUpgrades.Material m = WeaponUpgrades.materialFor(stack);
         if (m != null) {
             tip.add(Component.translatable("tooltip." + id + ".hint_material",
@@ -55,18 +65,31 @@ public class TooltipEvents {
             tip.add(Component.translatable("tooltip." + id + ".hint_potion").withStyle(color(TEMP)));
         }
 
-        if (!WeaponUtil.isLevelable(stack)) return;
+        // Подсказка для материалов брони
+        EquipmentUpgrades.Material em = EquipmentUpgrades.materialFor(stack);
+        if (em != null) {
+            tip.add(Component.translatable("tooltip." + id + ".hint_armor_material",
+                    Component.translatable("stat." + id + "." + em.id()), em.unit()).withStyle(color(PASSIVE)));
+        }
 
+        if (WeaponUtil.isLevelable(stack)) {
+            weaponTooltip(stack, tip);
+        } else if (EquipmentUtil.isArmor(stack)) {
+            armorTooltip(stack, tip);
+        } else if (JewelryRarity.has(stack)) {
+            int rank = JewelryRarity.rank(stack);
+            decorateHeader(tip, rank);
+            tip.add(line("rarity", WeaponRarity.component(rank)));
+        }
+    }
+
+    private static void weaponTooltip(ItemStack stack, List<Component> tip) {
+        String id = ExampleMod.MODID;
         WeaponData d = stack.getOrDefault(ModDataComponents.WEAPON_DATA.get(), WeaponData.DEFAULT);
         var level = Minecraft.getInstance().level;
         long now = level == null ? 0 : level.getGameTime();
 
-        // Название окрашиваем в цвет редкости
-        if (!tip.isEmpty()) {
-            tip.set(0, tip.get(0).copy().withStyle(WeaponRarity.style(d.rank())));
-            tip.add(1, Component.literal("              ")
-                    .withStyle(WeaponRarity.style(d.rank()).withStrikethrough(true)));
-        }
+        decorateHeader(tip, d.rank());
 
         tip.add(line("rarity", WeaponRarity.component(d.rank())));
         tip.add(line("slots", Component.literal(d.usedSlots() + "/" + d.maxSlots()).withStyle(color(VALUE))));
@@ -89,6 +112,26 @@ public class TooltipEvents {
             tip.add(Component.translatable("temp." + id + "." + t.id()).withStyle(color(TEMP))
                     .append(Component.literal(" " + roman(t.level())).withStyle(color(TEMP)))
                     .append(Component.literal("  " + time(rem)).withStyle(color(TIME))));
+        }
+    }
+
+    private static void armorTooltip(ItemStack stack, List<Component> tip) {
+        String id = ExampleMod.MODID;
+        EquipmentData d = stack.getOrDefault(
+                ModDataComponents.EQUIPMENT_DATA.get(), EquipmentData.DEFAULT);
+
+        decorateHeader(tip, d.rank());
+
+        tip.add(line("rarity", WeaponRarity.component(d.rank())));
+        tip.add(line("slots", Component.literal(d.usedSlots() + "/" + d.maxSlots()).withStyle(color(VALUE))));
+
+        for (Stat stat : Stat.values()) {
+            int lvl = d.get(stat);
+            if (lvl <= 0) continue;
+            int rgb = stat == Stat.LUCK ? LUCK : PASSIVE;
+            tip.add(Component.translatable("stat." + id + "." + stat.name().toLowerCase())
+                    .withStyle(color(rgb))
+                    .append(Component.literal(" " + roman(lvl)).withStyle(color(rgb))));
         }
     }
 }

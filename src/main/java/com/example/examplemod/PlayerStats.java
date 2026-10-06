@@ -7,19 +7,18 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 
 public record PlayerStats(int vitality, int strength, int dexterity,
-                          int intelligence, int luck, int mana) {
+                          int intelligence, int luck) {
 
     public static final int BASE = 10;
     public static final int MAX_STAT = 99;
-    public static final PlayerStats DEFAULT = new PlayerStats(BASE, BASE, BASE, BASE, BASE, 10);
+    public static final PlayerStats DEFAULT = new PlayerStats(BASE, BASE, BASE, BASE, BASE);
 
     public static final Codec<PlayerStats> CODEC = RecordCodecBuilder.create(i -> i.group(
             Codec.INT.optionalFieldOf("vitality", BASE).forGetter(PlayerStats::vitality),
             Codec.INT.optionalFieldOf("strength", BASE).forGetter(PlayerStats::strength),
             Codec.INT.optionalFieldOf("dexterity", BASE).forGetter(PlayerStats::dexterity),
             Codec.INT.optionalFieldOf("intelligence", BASE).forGetter(PlayerStats::intelligence),
-            Codec.INT.optionalFieldOf("luck", BASE).forGetter(PlayerStats::luck),
-            Codec.INT.optionalFieldOf("mana", 50).forGetter(PlayerStats::mana)
+            Codec.INT.optionalFieldOf("luck", BASE).forGetter(PlayerStats::luck)
     ).apply(i, PlayerStats::new));
     public static final StreamCodec<ByteBuf, PlayerStats> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.VAR_INT, PlayerStats::vitality,
@@ -27,7 +26,6 @@ public record PlayerStats(int vitality, int strength, int dexterity,
             ByteBufCodecs.VAR_INT, PlayerStats::dexterity,
             ByteBufCodecs.VAR_INT, PlayerStats::intelligence,
             ByteBufCodecs.VAR_INT, PlayerStats::luck,
-            ByteBufCodecs.VAR_INT, PlayerStats::mana,
             PlayerStats::new);
 
 
@@ -44,14 +42,14 @@ public record PlayerStats(int vitality, int strength, int dexterity,
 
     public PlayerStats with(Stat stat, int value) {
         int v = Math.max(1, Math.min(MAX_STAT, value));
-        PlayerStats n = switch (stat) {
-            case VITALITY -> new PlayerStats(v, strength, dexterity, intelligence, luck, mana);
-            case STRENGTH -> new PlayerStats(vitality, v, dexterity, intelligence, luck, mana);
-            case DEXTERITY -> new PlayerStats(vitality, strength, v, intelligence, luck, mana);
-            case INTELLIGENCE -> new PlayerStats(vitality, strength, dexterity, v, luck, mana);
-            case LUCK -> new PlayerStats(vitality, strength, dexterity, intelligence, v, mana);
+
+        return switch (stat) {
+            case VITALITY -> new PlayerStats(v, strength, dexterity, intelligence, luck);
+            case STRENGTH -> new PlayerStats(vitality, v, dexterity, intelligence, luck);
+            case DEXTERITY -> new PlayerStats(vitality, strength, v, intelligence, luck);
+            case INTELLIGENCE -> new PlayerStats(vitality, strength, dexterity, v, luck);
+            case LUCK -> new PlayerStats(vitality, strength, dexterity, intelligence, v);
         };
-        return n.withMana(n.mana());
     }
 
     /** Уровень персонажа: 1 + сумма очков выше базы */
@@ -72,10 +70,6 @@ public record PlayerStats(int vitality, int strength, int dexterity,
         return Math.max(1, 1 + (intelligence - BASE) / 10);
     }
 
-    public PlayerStats withMana(int newMana) {
-        return new PlayerStats(vitality, strength, dexterity, intelligence, luck,
-                Math.max(0, Math.min(newMana, maxMana())));
-    }
 
     /** Повышает стат на 1. null, если он уже на максимуме. */
     public PlayerStats levelUp(Stat stat) {

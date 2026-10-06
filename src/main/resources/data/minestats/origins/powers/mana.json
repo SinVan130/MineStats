@@ -1,0 +1,10 @@
+{
+  "type": "neoorigins:resource",
+  "backing": "irons_spellbooks:mana",
+  "required_mods": [
+    "irons_spellbooks"
+  ],
+  "name": "Мана",
+  "description": "Мана Iron's Spells для навыков класса.",
+  "hidden": true
+}

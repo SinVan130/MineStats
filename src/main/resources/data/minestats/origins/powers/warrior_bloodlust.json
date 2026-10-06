@@ -1,0 +1,36 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "kill",
+  "condition": {
+    "type": "neoorigins:and",
+    "conditions": [
+      {
+        "type": "neoorigins:nbt",
+        "nbt": "{Tags:[\"ms_warrior_bloodlust\"]}"
+      },
+      {
+        "type": "neoorigins:has_effect",
+        "effect": "minecraft:strength"
+      }
+    ]
+  },
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:heal",
+        "amount": 4.0
+      },
+      {
+        "type": "neoorigins:apply_effect",
+        "effect": "minecraft:speed",
+        "duration": 60,
+        "amplifier": 1,
+        "show_icon": true
+      }
+    ]
+  },
+  "name": "Кровавый азарт",
+  "description": "Убийство в боевой стойке лечит на 2 сердца и даёт Скорость II на 3 секунды.",
+  "hidden": true
+}

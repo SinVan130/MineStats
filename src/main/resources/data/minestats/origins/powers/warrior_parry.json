@@ -1,0 +1,55 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 240,
+  "condition": {
+    "type": "neoorigins:nbt",
+    "nbt": "{Tags:[\"ms_warrior_parry\"]}"
+  },
+  "fail_action": {
+    "type": "neoorigins:execute_command",
+    "command": "title @s actionbar {\"text\":\"Навык не изучен\",\"color\":\"red\"}"
+  },
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:toggle",
+        "power": "minestats:warrior_parry_window",
+        "value": true
+      },
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:item.armor.equip_iron",
+        "volume": 1.0,
+        "pitch": 1.0
+      },
+      {
+        "type": "neoorigins:spawn_particles",
+        "particle": "minecraft:enchanted_hit",
+        "count": 12,
+        "offset_y": 1.0,
+        "spread": {
+          "x": 0.4,
+          "y": 0.4,
+          "z": 0.4
+        }
+      },
+      {
+        "type": "neoorigins:delay",
+        "ticks": 14,
+        "action": {
+          "type": "neoorigins:toggle",
+          "power": "minestats:warrior_parry_window",
+          "value": false
+        }
+      }
+    ]
+  },
+  "cooldown_icon": "minecraft:shield",
+  "key": 2,
+  "resource_cost": "minestats:mana",
+  "resource_cost_amount": 20,
+  "name": "Парирование",
+  "description": "На долю секунды вы отражаете любой удар: урона нет, враг получает отдачу и слабость. Удачное парирование сокращает перезарядку.",
+  "hidden": true
+}

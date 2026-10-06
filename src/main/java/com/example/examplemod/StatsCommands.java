@@ -62,7 +62,8 @@ public class StatsCommands {
         PlayerStats s = p.getData(ModAttachments.PLAYER_STATS);
         p.sendSystemMessage(Component.translatable(key("header"),
                         Component.literal(String.valueOf(s.level())).withStyle(color(GOLD)),
-                        Component.literal(s.mana() + "/" + s.maxMana()).withStyle(color(MANA)),
+                        Component.literal(Math.round(ManaUtil.mana(p)) + "/" + Math.round(ManaUtil.maxMana(p)))
+                                .withStyle(color(MANA)),
                         Component.literal(String.valueOf(s.levelUpCost())).withStyle(color(VALUE)))
                 .withStyle(color(LABEL)));
         for (Stat stat : Stat.values()) {

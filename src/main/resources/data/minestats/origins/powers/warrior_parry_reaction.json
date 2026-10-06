@@ -1,0 +1,73 @@
+{
+  "type": "neoorigins:action_on_event",
+  "event": "hit_taken",
+  "condition": {
+    "type": "neoorigins:power_active",
+    "power": "minestats:warrior_parry_window"
+  },
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:cancel_event"
+      },
+      {
+        "type": "neoorigins:toggle",
+        "power": "minestats:warrior_parry_window",
+        "value": false
+      },
+      {
+        "type": "neoorigins:toggle",
+        "power": "minestats:warrior_parried",
+        "value": true
+      },
+      {
+        "type": "neoorigins:delay",
+        "ticks": 100,
+        "action": {
+          "type": "neoorigins:toggle",
+          "power": "minestats:warrior_parried",
+          "value": false
+        }
+      },
+      {
+        "type": "neoorigins:damage_attacker",
+        "amount": 5.0,
+        "source": {
+          "name": "generic"
+        }
+      },
+      {
+        "type": "neoorigins:effect_on_attacker",
+        "effect": "minecraft:weakness",
+        "duration": 100,
+        "amplifier": 0
+      },
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:item.shield.block",
+        "volume": 1.2,
+        "pitch": 0.9
+      },
+      {
+        "type": "neoorigins:spawn_particles",
+        "particle": "minecraft:crit",
+        "count": 25,
+        "offset_y": 1.0,
+        "spread": {
+          "x": 0.5,
+          "y": 0.5,
+          "z": 0.5
+        }
+      },
+      {
+        "type": "neoorigins:trigger_cooldown",
+        "power": "minestats:warrior_parry",
+        "cooldown": 40
+      }
+    ]
+  },
+  "name": "Отражение удара",
+  "description": "Часть навыка «Парирование».",
+  "hidden": true
+}

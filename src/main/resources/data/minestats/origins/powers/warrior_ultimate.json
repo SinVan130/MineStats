@@ -1,0 +1,68 @@
+{
+  "type": "neoorigins:active_ability",
+  "cooldown_ticks": 2400,
+  "condition": {
+    "type": "neoorigins:nbt",
+    "nbt": "{Tags:[\"ms_warrior_ultimate\"]}"
+  },
+  "fail_action": {
+    "type": "neoorigins:execute_command",
+    "command": "title @s actionbar {\"text\":\"Навык не изучен\",\"color\":\"red\"}"
+  },
+  "entity_action": {
+    "type": "neoorigins:and",
+    "actions": [
+      {
+        "type": "neoorigins:apply_effect",
+        "effects": [
+          {
+            "effect": "minecraft:strength",
+            "duration": 160,
+            "amplifier": 1
+          },
+          {
+            "effect": "minecraft:resistance",
+            "duration": 160,
+            "amplifier": 0
+          }
+        ]
+      },
+      {
+        "type": "neoorigins:play_sound",
+        "sound": "minecraft:entity.ravager.roar",
+        "volume": 1.2,
+        "pitch": 0.8
+      },
+      {
+        "type": "neoorigins:spawn_particles",
+        "particle": "minecraft:flame",
+        "count": 30,
+        "offset_y": 1.0,
+        "spread": {
+          "x": 0.6,
+          "y": 0.6,
+          "z": 0.6
+        }
+      },
+      {
+        "type": "neoorigins:spawn_projectile_rain",
+        "origin": "look",
+        "radius": 7.0,
+        "count": 36,
+        "duration_ticks": 100,
+        "telegraph_ticks": 14,
+        "damage_per_impact": 5.0,
+        "weapon_damage_scale": 0.4,
+        "knockup": 0.6,
+        "impact_radius": 2.5
+      }
+    ]
+  },
+  "cooldown_icon": "minecraft:netherite_sword",
+  "key": 4,
+  "resource_cost": "minestats:mana",
+  "resource_cost_amount": 60,
+  "name": "Клинковый шторм",
+  "description": "Боевой клич и ярость: Сила II и Сопротивление на 8 секунд, а туда, куда вы смотрите, обрушивается дождь призрачных клинков.",
+  "hidden": true
+}
